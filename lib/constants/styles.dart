@@ -10,3 +10,11 @@ final mainButtonStyle = TextButton.styleFrom(
     borderRadius: BorderRadius.circular(6),
   ),
 );
+final backButtonStyle = TextButton.styleFrom(
+  minimumSize: const Size(double.infinity, 40),
+  foregroundColor: Colors.white,
+  backgroundColor: Color.fromARGB(255, 215, 232, 246),
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(6),
+  ),
+);
