@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user/application/auth/auth_bloc.dart';
@@ -31,7 +29,7 @@ class RegistretionScreen extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Colors.white,
             leading: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios_new_rounded,
                 color: Colors.blueAccent,
               ),
@@ -49,39 +47,39 @@ class RegistretionScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       'Registration Form',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 27,
                           fontWeight: FontWeight.bold),
                     ),
-                    SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     commonTextFieldWidget(
                       title: 'Name',
                       hintText: 'Name',
                       textController: nameTextController,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     commonTextFieldWidget(
                       title: 'Email',
                       hintText: 'Email',
                       textController: emailTextController,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     commonTextFieldWidget(
                       title: 'Gender',
                       hintText: 'Gender',
                       textController: genderTextController,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     commonTextFieldWidget(
                       title: 'Password',
                       hintText: 'Enter password',
                       textController: passwordTextController,
                       isPassword: true,
                     ),
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     SubmitButton(
                       text: 'Next',
                       onPressed: () async {
@@ -89,8 +87,6 @@ class RegistretionScreen extends StatelessWidget {
                         final password = passwordTextController.text;
                         final name = nameTextController.text;
                         final gender = genderTextController.text;
-                        // todo : submit to firebase
-                        // todo : navigate to home screen
 
                         context
                             .read<AuthBloc>()
@@ -102,8 +98,8 @@ class RegistretionScreen extends StatelessWidget {
                             ));
                       },
                     ),
-                    SizedBox(height: 20),
-                    BackToLoginButton(),
+                    const SizedBox(height: 20),
+                    const BackToLoginButton(),
                   ],
                 ),
               ),
