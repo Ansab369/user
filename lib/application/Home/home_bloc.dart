@@ -16,7 +16,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(jsonDataReadingState(true));
       userFullData = await parseUsers('assets/users_list.json');
       emit(jsonDataReadingState(false));
+      userFullData = [...userFullData]..sort((a, b) => a.name.compareTo(b.name));
       emit(jsonDataRState(userFullData));
+    });
+    on<SearchTermChanged>((event, emit) async {
+      List<User> usersortData = [];
+      usersortData = filterAndSortUsers(userFullData, event.filter);
+      emit(jsonDataRState(usersortData));
     });
   }
 
@@ -26,5 +32,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     final response = await jsonDecode(jsonString);
     final users = response['Response']['Users'] as List;
     return users.map((user) => User.fromJson(user)).toList();
+  }
+
+  List<User> filterAndSortUsers(List<User> users, String filter) {
+   
+    final filteredUsers = users
+        .where((user) => user.name.toLowerCase().contains(filter.toLowerCase()))
+        .toList();
+
+    return filteredUsers;
   }
 }

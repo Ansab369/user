@@ -9,6 +9,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      // final TextEditingController searchController = TextEditingController();
+
 //
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<HomeBloc>().add(readDataFromJson());
@@ -23,6 +25,9 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             TextField(
+              // controller: searchController,
+                onChanged: (term) => context.read<HomeBloc>().add(SearchTermChanged(term)),
+
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(6),
