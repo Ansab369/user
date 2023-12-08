@@ -10,15 +10,10 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(AuthInitial()) {
-    on<AuthEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+   
 
      on<SubmitLoginButtonClickedEvent>((event, emit) async {
-       print(event.email);
-      print(event.password);
-      //!
-      //! validation
+   
       if (event.email == null || event.email.isEmpty) {
         showErrorMessage("Please enter your email address.");
       } else if (!event.email.contains('@')) {
@@ -44,7 +39,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final String gender =event.gender;
       bool isRegister = await register(email,password,name ,gender);
       if (isRegister == true) {
-        // then add values to database
         emit(AuthResultState(true));
       }
     });
@@ -80,16 +74,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           .createUserWithEmailAndPassword(
               email: emailAddress, password: password);
 
-              // Get the user ID after successful registration
     final userId = credential.user?.uid;
 
-     // Create a reference to Firestore collection and add user data
     await FirebaseFirestore.instance.collection('users').doc(userId).set({
       'email': emailAddress,
       'name': name,
       'gender': gender,
       'userId': userId,
-      // Add more fields as needed
     });
 
       return true;
@@ -103,7 +94,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  //
+  // show toast message
   void showErrorMessage(String message) {
   Fluttertoast.showToast(
     msg: message,

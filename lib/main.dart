@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user/application/Home/home_bloc.dart';
 import 'package:user/application/auth/auth_bloc.dart';
 import 'package:user/firebase_options.dart';
-import 'package:user/presentstion/home_screen/home_screen.dart';
 import 'package:user/presentstion/login_screen/login_screen.dart';
 
 void main() async {
@@ -33,8 +32,7 @@ class MyApp extends StatelessWidget {
               seedColor: const Color.fromARGB(255, 217, 7, 77)),
           useMaterial3: true,
         ),
-        // home: LoginScreen(),
-        home: HomeScreen(),
+        home:const LoginScreen(),
       ),
     );
   }
